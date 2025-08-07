@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -5,7 +9,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #ffffff;
     --foreground: #ededed;
   }
 }
@@ -38,5 +42,129 @@ a {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+
+/* for page.yxs */
+/* globals.css or inside a <style> tag */
+.page-container {
+  min-height: 100vh;
+  margin: 0;
+  padding: 2rem 0;
+  background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%);
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #003366;
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+.bold {
+  font-weight: 800;
+}
+
+.form-grid {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.form-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-select {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  background: #6FE7DB;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.form-textarea,
+.output-box {
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  resize: vertical;
+  min-height: 100px;
+  background: #00CC99;
+  color: white;
+  font-size: 1rem;
+}
+
+.output-box {
+  min-height: 120px;
+  position: relative;
+}
+
+.output-box .speak-output {
+  margin-top: 0.5rem;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.form-button {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #1DE9B6;
+  color: #003366;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.form-button:hover {
+  background: #1ad0a8;
+}
+
+.about-link {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.about-link a {
+  color: #003366;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.about-link a:hover {
+  color: #0066cc;
+}
+
+/* Desktop: Side-by-side */
+@media (min-width: 1024px) {
+  .form-grid {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .form-column {
+    flex: 1;
   }
 }

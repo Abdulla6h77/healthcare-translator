@@ -1,95 +1,94 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
 
-export default function Home() {
+import { useState } from "react";
+import { startListening } from "@/utils/speechRecognition";
+import { translateText } from "@/utils/translate";
+import { speak } from "@/utils/speechSynthesis";
+import Link from "next/link";
+
+export default function TranslatePage() {
+  const [input, setInput] = useState("");
+  const [output, setOutput] = useState("");
+  const [sourceLang, setSourceLang] = useState("auto");
+  const [targetLang, setTargetLang] = useState("es");
+
+  const handleTranslate = async () => {
+    if (!input.trim()) return;
+    const result = await translateText(input, sourceLang, targetLang);
+    setOutput(result);
+    speak(result, targetLang);
+  };
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="page-container">
+      <h1 className="page-title">
+        <span className="bold">Healthcare</span> Translator
+      </h1>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      <div className="form-grid">
+        {/* Left Column */}
+        <div className="form-column">
+          <select
+            value={sourceLang}
+            onChange={(e) => setSourceLang(e.target.value)}
+            className="form-select"
           >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+            <option value="auto">Auto-detect</option>
+            <option value="en">English</option>
+            <option value="ur">Urdu</option>
+            <option value="hi">Hindi</option>
+            <option value="bn">Bengali</option>
+            <option value="pa">Punjabi</option>
+            <option value="ta">Tamil</option>
+            <option value="te">Telugu</option>
+          </select>
+
+          <textarea
+            placeholder="Enter healthcare-related text..."
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            className="form-textarea"
+          ></textarea>
+
+          <button onClick={() => startListening(sourceLang, (text) => setInput(text))} className="form-button">
+            🎤 Speak
+          </button>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Right Column */}
+        <div className="form-column">
+          <select
+            value={targetLang}
+            onChange={(e) => setTargetLang(e.target.value)}
+            className="form-select"
+          >
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="zh">Chinese</option>
+            <option value="de">German</option>
+            <option value="ru">Russian</option>
+            <option value="ar">Arabic</option>
+            <option value="pt">Portuguese</option>
+          </select>
+
+          <div className="output-box">
+            {output || "Translated text will appear here."}
+            {output && (
+              <button onClick={() => speak(output, targetLang)} className="speak-output">
+                🔊
+              </button>
+            )}
+          </div>
+
+          <button onClick={handleTranslate} className="form-button">
+            Translate
+          </button>
+        </div>
+      </div>
+
+      <div className="about-link">
+        <Link href="/about">📘 How to use this app</Link>
+      </div>
     </div>
   );
 }
