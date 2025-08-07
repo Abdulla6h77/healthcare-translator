@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Healthcare Translator
+
+A modern, responsive web app built with Next.js that translates healthcare-related text and speech between multiple languages. Optimized for both desktop and mobile use, it offers voice input, auto language detection, and speech output of translations.
+
+## Features
+
+- **Text translation** between supported languages.
+- **Speech-to-text input** via microphone.
+- **Auto-detect source language** or manual selection.
+- **Audio playback** of translated text.
+- Responsive UI with clean design.
+- Supports multiple languages including English, Urdu, Hindi, Spanish, French, and more.
+- Simple, accessible interface with user guide.
+
+## Tech Stack
+
+- Frontend: Next.js 15.x, React
+- Styling: Plain CSS with responsive layout
+- Speech Recognition & Synthesis: Web Speech API
+- Translation API: (Mention your API here, e.g., OpenAI, Google Translate, or custom)
+- Deployment: Vercel
 
 ## Getting Started
 
-First, run the development server:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Abdulla6h77/healthcare-translator.git
+2. Install dependencies:
+    npm install
+3. Create .env.local with required API keys (if any):
+    OPENAI_API_KEY=your_api_key_here
+4.Run the development server:
+    npm run dev
+5.Open http://localhost:3000 to view in your browser.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Deployment
+The app is deployed on Vercel and accessible at:
+link- https://healthcare-translator-nyubwnck5.vercel.app
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
+Select source and target languages.
+Enter text or click the 🎤 Speak button to input voice.
+Click Translate to get the translated text.
+Use 🔊 button to listen to the translated audio.
+Visit the How to Use guide on the About page for detailed instructions.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+MIT License © 2025 Abdullah Usman
