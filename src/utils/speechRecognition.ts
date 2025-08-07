@@ -50,10 +50,16 @@ interface SpeechRecognition extends EventTarget {
   onsoundstart: () => void;
   onsoundend: () => void;
 }
+declare global {
+  interface Window {
+    webkitSpeechRecognition?: { new(): SpeechRecognition };
+    SpeechRecognition?: new () => SpeechRecognition;
+  }
+}
 
 export const getSpeechRecognition = (): SpeechRecognition | null => {
-  const SpeechRecognitionAPI =
-    (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    const SpeechRecognitionAPI =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
 
   if (!SpeechRecognitionAPI) {
     alert("Speech recognition not supported in this browser.");
