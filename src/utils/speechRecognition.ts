@@ -4,6 +4,7 @@
 interface SpeechRecognitionEvent extends Event {
   results: SpeechRecognitionResultList;
   resultIndex: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   interpretation: any;
 }
 
