@@ -11,6 +11,7 @@ export default function TranslatePage() {
   const [output, setOutput] = useState("");
   const [sourceLang, setSourceLang] = useState("auto");
   const [targetLang, setTargetLang] = useState("es");
+  const [showModal, setShowModal] = useState(false);
 
   const handleTranslate = async () => {
     if (!input.trim()) return;
@@ -20,6 +21,7 @@ export default function TranslatePage() {
   };
 
   return (
+    <>
     <div className="page-container">
       <h1 className="page-title">
         <span className="bold">Healthcare</span> Translator
@@ -87,8 +89,82 @@ export default function TranslatePage() {
       </div>
 
       <div className="about-link">
-        <Link href="/about">📘 How to use this app</Link>
+          <button onClick={() => setShowModal(true)} style={{ background: 'none', border: 'none', color: '#003366', fontWeight: 'bold', textDecoration: 'underline', cursor: 'pointer', fontSize: 'inherit' }}>
+            📘 How to use this app
+          </button>
+        </div>
       </div>
-    </div>
+
+      
+
+      {showModal  && (
+        <div className="modal-overlay" onClick={() => setShowModal(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2>How to Use Healthcare Translator</h2>
+              <button 
+                onClick={() => setShowModal(false)}
+                className="modal-close"
+              >
+                ×
+              </button>
+            </div>
+            
+            <div className="modal-body">
+              <section>
+                <h3>🎯 Purpose</h3>
+                <p>This healthcare translator helps medical professionals and patients communicate effectively across language barriers in healthcare settings.</p>
+              </section>
+
+              <section>
+                <h3>🚀 Getting Started</h3>
+                <ol>
+                  <li><strong>Select Source Language:</strong> Choose the language you want to translate from, or use "Auto-detect" to let the system identify it automatically.</li>
+                  <li><strong>Select Target Language:</strong> Choose the language you want to translate to.</li>
+                  <li><strong>Enter Text:</strong> Type healthcare-related text in the left textarea, or use the microphone button to speak.</li>
+                  <li><strong>Translate:</strong> Click the "Translate" button to get the translation.</li>
+                  <li><strong>Listen:</strong> Click the speaker icon 🔊 to hear the translation spoken aloud.</li>
+                </ol>
+              </section>
+
+              <section>
+                <h3>🎤 Voice Features</h3>
+                <ul>
+                  <li><strong>Speech Input:</strong> Click the 🎤 "Speak" button to dictate text instead of typing</li>
+                  <li><strong>Audio Output:</strong> The translated text will be automatically spoken, and you can replay it using the 🔊 button</li>
+                </ul>
+              </section>
+
+              <section>
+                <h3>🏥 Healthcare Focus</h3>
+                <p>This translator is optimized for medical terminology and healthcare conversations, including:</p>
+                <ul>
+                  <li>Symptoms and medical conditions</li>
+                  <li>Treatment instructions</li>
+                  <li>Medication information</li>
+                  <li>Appointment scheduling</li>
+                  <li>Emergency medical situations</li>
+                </ul>
+              </section>
+
+              <section>
+                <h3>💡 Tips for Best Results</h3>
+                <ul>
+                  <li>Speak clearly when using voice input</li>
+                  <li>Use simple, clear sentences</li>
+                  <li>Double-check important medical information</li>
+                  <li>Have the patient confirm they understand the translation</li>
+                </ul>
+              </section>
+
+              <section>
+                <h3>⚠️ Important Notice</h3>
+                <p><em>This tool is meant to assist with basic communication. For critical medical decisions, always consult with professional medical interpreters when possible.</em></p>
+              </section>
+            </div>
+          </div>
+        </div>
+      )};
+      </>
   );
 }
