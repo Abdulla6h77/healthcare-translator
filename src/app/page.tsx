@@ -4,7 +4,7 @@ import { useState } from "react";
 import { startListening } from "@/utils/speechRecognition";
 import { translateText } from "@/utils/translate";
 import { speak } from "@/utils/speechSynthesis";
-import Link from "next/link";
+
 
 export default function TranslatePage() {
   const [input, setInput] = useState("");
