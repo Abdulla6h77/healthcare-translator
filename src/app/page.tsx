@@ -119,10 +119,10 @@ export default function TranslatePage() {
               <section>
                 <h3>🚀 Getting Started</h3>
                 <ol>
-                  <li><strong>Select Source Language:</strong> Choose the language you want to translate from, or use "Auto-detect" to let the system identify it automatically.</li>
+                  <li><strong>Select Source Language:</strong> Choose the language you want to translate from, or use &ldquo;Auto-detect&rdquo; to let the system identify it automatically.</li>
                   <li><strong>Select Target Language:</strong> Choose the language you want to translate to.</li>
                   <li><strong>Enter Text:</strong> Type healthcare-related text in the left textarea, or use the microphone button to speak.</li>
-                  <li><strong>Translate:</strong> Click the "Translate" button to get the translation.</li>
+                  <li><strong>Translate:</strong> Click the &ldquo;Translate&rdquo; button to get the translation.</li>
                   <li><strong>Listen:</strong> Click the speaker icon 🔊 to hear the translation spoken aloud.</li>
                 </ol>
               </section>
@@ -130,7 +130,7 @@ export default function TranslatePage() {
               <section>
                 <h3>🎤 Voice Features</h3>
                 <ul>
-                  <li><strong>Speech Input:</strong> Click the 🎤 "Speak" button to dictate text instead of typing</li>
+                  <li><strong>Speech Input:</strong> Click the 🎤 &ldquo;Speak&rdquo; button to dictate text instead of typing</li>
                   <li><strong>Audio Output:</strong> The translated text will be automatically spoken, and you can replay it using the 🔊 button</li>
                 </ul>
               </section>
